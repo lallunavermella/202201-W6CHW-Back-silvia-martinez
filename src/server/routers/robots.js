@@ -1,9 +1,8 @@
 const express = require("express");
+const getAllRobots = require("../controllers/robotControllers");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const robots = await Robot.find();
-  res.status(200);
-  res.json({ robots });
-});
+router.get("/", getAllRobots);
+
+module.exports = router;
