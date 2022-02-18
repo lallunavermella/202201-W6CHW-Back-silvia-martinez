@@ -2,6 +2,7 @@ require("dotenv").config();
 const debug = require("debug")("robots:server");
 const chalk = require("chalk");
 const express = require("express");
+const { errorNotFound, errorDefault } = require("./middlewares/errors");
 
 const app = express();
 
@@ -16,5 +17,9 @@ const upServer = (port) =>
       reject(error);
     });
   });
+
+app.use(errorNotFound);
+
+app.use(errorDefault);
 
 module.exports = upServer;
