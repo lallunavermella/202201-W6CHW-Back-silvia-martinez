@@ -5,11 +5,11 @@ const RobotSchema = new Schema({
     type: String,
     required: true,
   },
-  imagen: { type: URL },
+  imagen: { type: String },
   caracteristicas: {
-    Velocidad: { type: Number, min: 0, max: 10 },
-    Resistencia: { type: Number, min: 0, max: 10 },
-    "Fecha de creacion": { type: Date, required: true },
+    velocidad: { type: Number, min: 0, max: 10 },
+    resistencia: { type: Number, min: 0, max: 10 },
+    creacion: { type: Date, required: true },
   },
 });
 
