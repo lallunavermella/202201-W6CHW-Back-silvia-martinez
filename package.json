@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node src",
-    "start -dev": "nodemon src -q"
+    "start -dev": "nodemon src -q",
+    "test": "jest --watchAll",
+    "test-coverage": "jest --watchAll --coverage"
   },
   "keywords": [],
   "author": "",
