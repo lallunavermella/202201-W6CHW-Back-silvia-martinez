@@ -11,7 +11,9 @@ const app = express();
 const upServer = (port) =>
   new Promise((resolve, reject) => {
     const server = app.listen(port, () => {
-      debug(chalk.yellow(`Server listening on http://localhost:${port}`));
+      debug(
+        chalk.yellow(`Server listening on http://localhost:${port}/robots`)
+      );
       resolve();
     });
 
