@@ -3,6 +3,7 @@ const debug = require("debug")("robots:server");
 const chalk = require("chalk");
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const robotsRouter = require("./routers/robots");
 const { errorNotFound, errorDefault } = require("./middlewares/errors");
 
@@ -23,6 +24,8 @@ const upServer = (port) =>
   });
 
 app.use(morgan("dev"));
+
+app.use(cors());
 
 app.use("/robots", robotsRouter);
 
