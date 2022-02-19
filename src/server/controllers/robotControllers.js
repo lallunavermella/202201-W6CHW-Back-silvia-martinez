@@ -6,9 +6,9 @@ const getAllRobots = async (req, res) => {
 };
 
 const getRobot = async (req, res, next) => {
-  const { id } = req.params;
+  const { idRobot } = req.params;
   try {
-    const robot = await Robot.findById(req.params.id);
+    const robot = await Robot.findById(idRobot);
     if (robot) {
       res.json(robot);
     } else {
