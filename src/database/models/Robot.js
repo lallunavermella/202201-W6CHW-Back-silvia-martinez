@@ -1,15 +1,15 @@
 const { model, Schema } = require("mongoose");
 
 const RobotSchema = new Schema({
-  nombre: {
+  name: {
     type: String,
     required: true,
   },
-  imagen: { type: String },
-  caracteristicas: {
-    velocidad: { type: Number, min: 0, max: 10 },
-    resistencia: { type: Number, min: 0, max: 10 },
-    creacion: { type: Date, required: true },
+  image: { type: String },
+  caractheristics: {
+    velocity: { type: Number, min: 0, max: 10 },
+    resistence: { type: Number, min: 0, max: 10 },
+    creation: { type: Date, required: true },
   },
 });
 
