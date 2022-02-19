@@ -3,7 +3,8 @@ const errorNotFound = (req, res) => {
   res.json({ error: true, message: "Not found" });
 };
 
-const errorDefault = (req, res) => {
+// eslint-disable-next-line no-unused-vars
+const errorDefault = (err, req, res, next) => {
   res.status(500);
   res.json({ error: true, message: "ERRRRROOOOR" });
 };
