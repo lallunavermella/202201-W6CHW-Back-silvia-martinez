@@ -39,4 +39,22 @@ const deleteRobot = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRobots, getRobot, deleteRobot };
+const createdRobot = async (req, res, next) => {
+  const newRobot = req.body;
+  try {
+    const madeRobot = Robot.create(newRobot);
+    if (newRobot) {
+      res.status(201);
+      res.json(madeRobot);
+    } else {
+      const error = new Error("Robot not found");
+      error.code = 404;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  }
+};
+
+module.exports = { getAllRobots, getRobot, deleteRobot, createdRobot };
