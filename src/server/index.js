@@ -27,6 +27,8 @@ app.use(morgan("dev"));
 
 app.use(cors());
 
+app.use(express.json());
+
 app.use("/robots", robotsRouter);
 
 app.use(errorNotFound);

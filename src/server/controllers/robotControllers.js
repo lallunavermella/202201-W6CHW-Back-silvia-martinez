@@ -39,4 +39,11 @@ const deleteRobot = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRobots, getRobot, deleteRobot };
+const createRobot = async (req, res) => {
+  const newRobot = req.body;
+  const createdRobot = await Robot.create(newRobot);
+  res.status(201);
+  res.json(createdRobot);
+};
+
+module.exports = { getAllRobots, getRobot, deleteRobot, createRobot };
