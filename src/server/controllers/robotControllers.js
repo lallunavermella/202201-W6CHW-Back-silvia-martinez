@@ -27,7 +27,7 @@ const deleteRobot = async (req, res, next) => {
   try {
     const robot = await Robot.findByIdAndDelete(idRobot);
     if (robot) {
-      res.json(robot);
+      res.json({ robot });
     } else {
       const error = new Error("Robot not found");
       error.code = 404;
