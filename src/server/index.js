@@ -4,6 +4,7 @@ const chalk = require("chalk");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const helmet = require("helmet");
 const robotsRouter = require("./routers/robots");
 const { errorNotFound, errorDefault } = require("./middlewares/errors");
 
@@ -24,6 +25,8 @@ const upServer = (port) =>
   });
 
 app.use(morgan("dev"));
+
+app.use(helmet());
 
 app.use(cors());
 
