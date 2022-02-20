@@ -39,4 +39,4 @@ const deleteRobot = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRobots, getRobot };
+module.exports = { getAllRobots, getRobot, deleteRobot };
