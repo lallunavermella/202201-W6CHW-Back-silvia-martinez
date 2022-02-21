@@ -39,11 +39,44 @@ const deleteRobot = async (req, res, next) => {
   }
 };
 
-const createRobot = async (req, res) => {
+const createRobot = async (req, res, next) => {
   const newRobot = req.body;
-  const createdRobot = await Robot.create(newRobot);
-  res.status(201);
-  res.json(createdRobot);
+  try {
+    const createdRobot = await Robot.create(newRobot);
+    if (createRobot) {
+      res.status(201).json(createdRobot);
+    } else {
+      const error = new Error("Robot not found");
+      error.code = 404;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  }
 };
 
-module.exports = { getAllRobots, getRobot, deleteRobot, createRobot };
+const updateRobot = async (req, res, next) => {
+  const { _id } = req.body;
+  try {
+    const updatedRobot = await Robot.findByIdAndUpdate(_id, req.body);
+    if (updateRobot) {
+      res.status(200).json({ updatedRobot });
+    } else {
+      const error = new Error("Robot not found");
+      error.code = 404;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  }
+};
+
+module.exports = {
+  getAllRobots,
+  getRobot,
+  deleteRobot,
+  createRobot,
+  updateRobot,
+};
