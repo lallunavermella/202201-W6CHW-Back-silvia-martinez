@@ -6,6 +6,7 @@ const {
   createRobot,
   updateRobot,
 } = require("../controllers/robotControllers");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get("/", getAllRobots);
 
 router.get("/:idRobot", getRobot);
 
-router.delete("/:idRobot", deleteRobot);
+router.delete("/:idRobot", auth, deleteRobot);
 
 router.post("/create", createRobot);
 
