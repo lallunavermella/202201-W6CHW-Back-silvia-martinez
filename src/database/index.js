@@ -10,7 +10,7 @@ const connectDataBase = (connectionString) =>
         virtuals: true,
         transform: (doc, ret) => {
           // eslint-disable-next-line no-underscore-dangle,  no-param-reassign
-          delete ret._id;
+          delete ret.id;
           // eslint-disable-next-line no-underscore-dangle,  no-param-reassign
           delete ret.__v;
         },
