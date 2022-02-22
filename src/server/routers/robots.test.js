@@ -44,4 +44,12 @@ describe("Given a /robots/ endpoint ", () => {
       expect(body.robots).toHaveLength(2);
     });
   });
+  describe("When it receives a PUT", () => {
+    test("Then it sloud return a error", async () => {
+      const errorMessage = "Not found";
+      const { body } = await request(app).put("/robots").expect(404);
+
+      expect(body.message).toBe(errorMessage);
+    });
+  });
 });
