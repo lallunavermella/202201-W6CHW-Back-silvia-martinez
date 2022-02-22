@@ -45,11 +45,38 @@ describe("Given a /robots/ endpoint ", () => {
     });
   });
   describe("When it receives a PUT", () => {
-    test("Then it sloud return a error", async () => {
+    test("Then it should return a error", async () => {
       const errorMessage = "Not found";
       const { body } = await request(app).put("/robots").expect(404);
 
       expect(body.message).toBe(errorMessage);
+    });
+  });
+});
+
+describe("Given a /robots/id endpoint", () => {
+  describe("When it receives a GET with an inexisting id", () => {
+    test("Then it should return an error ", async () => {
+      const id = 1;
+      const { body } = await request(app).get(`/robots/${id}`).expect(500);
+
+      expect(body.robots).toBe();
+    });
+  });
+  describe("When it receives a Get with a valid id", () => {
+    test("Then it should response with code 200", async () => {
+      const {
+        body: {
+          robots: {
+            0: { _id: id },
+          },
+        },
+      } = await request(app).get("/robots").expect(200);
+
+      const { body } = await request(app).get(`/robots/${id}`).expect(200);
+
+      // eslint-disable-next-line no-underscore-dangle
+      expect(id).toEqual(body._id);
     });
   });
 });
