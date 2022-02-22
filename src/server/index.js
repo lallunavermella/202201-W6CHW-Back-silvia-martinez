@@ -25,4 +25,4 @@ app.use(errorNotFound);
 
 app.use(errorDefault);
 
-module.exports = { app };
+module.exports = app;
